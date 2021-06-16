@@ -14,13 +14,13 @@ This repository documentation for simple asus tinkerboard camera control. Test c
 ## Usage
 * preview
 ```console
-$ from stkcam import TKCam
-$ cam = TKCam(1) # 1 for OV5647
+$ from stkcam import TKCam, CamType
+$ cam = TKCam(CamType.OV5647)
 $ cam.preview()
 ```
 * take a picture
 ```console
-$ from stkcam import TKCam
-$ cam = TKCam(1) # 1 for OV5647
+$ from stkcam import TKCam, CamType
+$ cam = TKCam(CamType.OV5647)
 $ cam.take_image('/home/linaro/Desktop\image.jpg') # image path
 ```
