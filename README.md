@@ -5,11 +5,18 @@ This repository documentation for simple asus tinkerboard camera control. Test c
 
 ## Test Environment
 
-* device: [ASUS Tinkerboard](https://www.asus.com/us/Networking-IoT-Servers/AIoT-Industrial-Solution/All-series/Tinker-Board/)
-* image: v2.2.2
-* camera: OV5647 (Raspiberry Camera V1, 5MP)
-  * IMX219 (Raspiberry Camera V2, 8MP), another tinkerboard supported camera is not tested
-* python version: 3.5
+* [ASUS Tinkerboard](https://www.asus.com/networking-iot-servers/aiot-industrial-solutions/tinker-series/tinker-board/)
+  * image: v2.2.2
+  * camera:
+    * OV5647 (Raspiberry Camera V1, 5MP)
+    * IMX219 (Raspiberry Camera V2, 8MP)
+  * python version: 3.5
+* [ASUS Tinkerboard 2](https://www.asus.com/networking-iot-servers/aiot-industrial-solutions/tinker-series/tinker-system-2/)
+  * image: v3.0.6
+  * camera:
+    * OV5647 (Raspiberry Camera V1, 5MP)
+    * IMX219 (Raspiberry Camera V2, 8MP)
+  * python version: 3.9.2
 
 ## Usage
 * preview

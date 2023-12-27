@@ -1,5 +1,6 @@
 from enum import Enum
 import threading
+import re
 
 import gi
 gi.require_version('Gst', '1.0')
@@ -19,16 +20,22 @@ BOOT_OVERLAY_SETTINGS = {
     CamType.IMX219: ''
 }
 
-def find_string_in_file(path: str, string: str) -> bool:
-    with open(path) as f:
-        if string in f.read():
-            return True
+def check_config(value: str) -> bool:
+    with open(BOOT_CONFIG_PATH, 'r') as file:
+        match = False
+        for line in file:
+            match = re.search(r'^overlay=(.*)', line)
+            if match:
+                match_value = match.group(1)
+                return True if match_value == value else False
     return False
 
 def check_cam_seeting(type: CamType):
-    if type == CamType.OV5647 and find_string_in_file(BOOT_CONFIG_PATH, BOOT_OVERLAY_SETTINGS[type]):
+    if type == CamType.OV5647 and check_config(BOOT_OVERLAY_SETTINGS[type]):
         pass
-    elif type == CamType.IMX219 and not find_string_in_file(BOOT_CONFIG_PATH, BOOT_OVERLAY_SETTINGS[CamType.OV5647]):
+    elif type == CamType.IMX219 and not check_config(BOOT_OVERLAY_SETTINGS[CamType.OV5647]):
+        pass
+    else:
         raise Exception(
             'Should set camera configuration by command, sudo tinker-config, and reboot device'
         )
